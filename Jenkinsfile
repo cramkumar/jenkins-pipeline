@@ -5,7 +5,7 @@ pipeline  {
 }
  agent {
       docker {
-             image 'gnschenker/node-docker'
+             image 'jdocker'
              args '-p 3000:3000'
              args '-w /app'
              args '-v /var/run/docker.sock:/var/run/docker.sock'
@@ -34,17 +34,7 @@ stages {
                   sh "docker image rm $registry:$BUILD_NUMBER"
                  }
 
-       stage("Deploy and smoke test") {
-            steps {
-                  sh ./jenkins/scripts/deploy.sh'
-                 }
-              }
-
-       stage("Cleanup") {
-            steps {
-                  sh ./jenkins/scripts/cleanup.sh'
-                 }
-              }
+               }
 
           }
     }
