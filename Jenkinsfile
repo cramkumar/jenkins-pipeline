@@ -1,6 +1,6 @@
 pipeline  {
    environment {
-        registry = "jenkins-docker-test"
+        registry = "cramkumar/jenkins-docker-test"
         DOCKER_PWD = credentials('docker-login-pwd')
 }
  agent {
@@ -28,7 +28,7 @@ stages {
               }
        stage("Build and Post Docker image ") {
             steps {
-                  sh 'docker image build -t $registry:$BUILD_NUMBER'
+                  sh 'docker image build -t $registry:$BUILD_NUMBER .'
                   sh 'docker login -u cramkumar -p $DOCKER_PWD'
                   sh 'docker image push $registry:$BUILD_NUMBER'
                   sh "docker image rm $registry:$BUILD_NUMBER"
