@@ -34,9 +34,7 @@ stages {
                   sh "docker image rm $registry:$BUILD_NUMBER"
                  }
 
-<<<<<<< HEAD
                }
-=======
        stage("Deploy and smoke test") {
             steps {
                   sh  './jenkins/scripts/deploy.sh'
@@ -48,7 +46,6 @@ stages {
                   sh './jenkins/scripts/cleanup.sh'
                  }
               }
->>>>>>> ea7e1b3ee23fa90063d01e300bfaf96eb5ef109c
 
           }
     }
