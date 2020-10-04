@@ -8,7 +8,7 @@ docker network rm test-net || true
 echo "Deploying app ($registry:$BUILD_NUMBER)..."
 docker network create test-net
 
-docker container run -d  --name api --net test-net $registry:$BUILD_NUMBER
+docker container run -d  --name api --net test-net -p 3000:3000 $registry:$BUILD_NUMBER
 
 read -d '' wait_for << EOF
 echo "Waiting for API to listen to port 3000"
